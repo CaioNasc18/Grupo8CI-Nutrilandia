@@ -104,3 +104,14 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# =========================================================================
+# Otimizações Extra para Sistema Operacional e Ferramentas Comuns (Adicionado)
+# =========================================================================
+
+# Arquivos temporários do Windows e macOS
+.DS_Store
+Thumbs.db
+
+# Pastas de pacotes locais modificados (se aplicável)
+/[Pp]ackages/manifest.json.lock
