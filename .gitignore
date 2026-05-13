@@ -115,3 +115,9 @@ Thumbs.db
 
 # Pastas de pacotes locais modificados (se aplicável)
 /[Pp]ackages/manifest.json.lock
+
+# Ignorar os ficheiros descarregados pelo Package Manager
+/[Pp]ackages/*
+!/[Pp]ackages/manifest.json
+!/[Pp]ackages/packages-lock.json
+
