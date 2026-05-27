@@ -186,6 +186,6 @@ public class CardsManager : MonoBehaviour
         yield return new WaitForSeconds(victoryMusic.clip.length);
 
         // Carrega a cena final
-        SceneManager.LoadScene("FinalScene");
+        SceneManager.LoadScene("MemoriaResultado");
     }
 }
