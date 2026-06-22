@@ -4,12 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameRunner : MonoBehaviour
+public class GameRunnerFloresta : MonoBehaviour
 {
     [Header("Tempo das toupeiras")]
-    [Range(0.5f, 3f)]
+    [Range(0.5f, 5f)]
     [SerializeField]
-    private float moleTimer = 1f;
+    private float moleTimer = 2f;
+
+    [Header("Fade das toupeiras")]
+    [SerializeField]
+    private float fadeDuration = 0.5f;
 
     [Header("Tempo do jogo")]
     [Range(10, 120)]
@@ -22,11 +26,11 @@ public class GameRunner : MonoBehaviour
 
     private System.Random randomNumberGenerator;
     private float currentTimer;
+    private bool gameEnded = false;
 
     [Header("UI")]
     [SerializeField]
     private TMP_Text timerText;
-
     [SerializeField]
     private TMP_Text scoreText;
 
@@ -34,73 +38,90 @@ public class GameRunner : MonoBehaviour
 
     void Start()
     {
+        if (timerText == null)
+        {
+            Debug.LogError("timerText não atribuído no Inspector!", this);
+            return;
+        }
+        if (listMoles == null || listMoles.Count == 0)
+        {
+            Debug.LogError("listMoles vazia no Inspector!", this);
+            return;
+        }
+
         randomNumberGenerator = new System.Random();
-
         currentTimer = 0;
-
-        // Esconde todas no início
+        gameEnded = false;
+        GameManagerFloresta.Reset();
         listMoles.ForEach(item => item.SetActive(false));
-
         UpdateScoreText();
-
         StartCoroutine(ChangeMole());
     }
 
     IEnumerator ChangeMole()
     {
+        Debug.Log("ChangeMole iniciado");
         while (currentTimer < matchTimer)
         {
-            // Esconde todas
             listMoles.ForEach(item => item.SetActive(false));
+            yield return new WaitForSeconds(fadeDuration);
 
-            // Escolhe uma aleatória
             int randomNumber = randomNumberGenerator.Next(0, listMoles.Count);
-
-            // Mostra
+            Debug.Log($"A mostrar objeto {randomNumber}");
             listMoles[randomNumber].SetActive(true);
 
-            // Espera
             yield return new WaitForSeconds(moleTimer);
         }
+
+        listMoles.ForEach(item => item.SetActive(false));
     }
 
     void Update()
     {
+        if (gameEnded) return;
+
         currentTimer += Time.deltaTime;
 
-        // Atualiza tempo
         float numberOfSeconds = matchTimer - currentTimer;
-
         numberOfSeconds = Mathf.Clamp(numberOfSeconds, 0, matchTimer);
-
         timerText.text = $"{numberOfSeconds:00}";
 
-        // Fim do jogo
-        if (currentTimer >= matchTimer || score < 0)
+        if (currentTimer >= matchTimer)
         {
-            SceneManager.LoadScene("FinalScene");
+            EndGame();
         }
     }
 
-    // Alimento pouco saudável
+    void EndGame()
+    {
+        if (gameEnded) return;
+        gameEnded = true;
+
+        listMoles.ForEach(item => item.SetActive(false));
+        StopAllCoroutines();
+        SceneManager.LoadScene("ToupeiraResultado");
+    }
+
     public void IncrementRightAnswer()
     {
+        if (gameEnded) return;
+        GameManagerFloresta.IncrementRightAnswer();
         score++;
-
         UpdateScoreText();
     }
 
-    // Alimento saudável
     public void IncrementWrongAnswer()
     {
+        if (gameEnded) return;
+        GameManagerFloresta.IncrementWrongAnswer();
         score--;
-
         UpdateScoreText();
     }
 
     void UpdateScoreText()
     {
-        scoreText.text = "Pontos: " + score;
+        if (scoreText != null)
+            scoreText.text = "Pontos: " + score;
     }
 
     public int GetScore()
