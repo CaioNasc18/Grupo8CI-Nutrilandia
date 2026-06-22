@@ -25,20 +25,21 @@ public class TimerScript : MonoBehaviour
     }
 
     void Update()
+{
+    if (!isCounting || timerText == null)
     {
-        if (!isCounting || timerText == null)
-        {
-            return;
-        }
+        return;
+    }
 
-        currentTimer += Time.deltaTime;
+    currentTimer += Time.deltaTime;
 
-        // Calcula os segundos
-        float seconds = Mathf.FloorToInt(currentTimer % 60);
-        
-        // Atualiza o texto
-        timerText.text = $"{seconds:00}";
-    } 
+   
+    int seconds = Mathf.FloorToInt(currentTimer);
+    
+    
+    timerText.text = $"{seconds:000}";
+}
+
 
     public int GetTimerAndStop()
     {

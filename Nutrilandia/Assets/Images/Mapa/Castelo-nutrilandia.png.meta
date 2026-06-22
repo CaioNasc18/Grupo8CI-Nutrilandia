@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a5f44f9adf8514b49bcc4664c746c766
+guid: 0be4af5b82cc19d459a37112737e8191
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8818794200299662501
-    second: Mapa(esboco)_0
+      213: -2721523754138211091
+    second: Castelo-nutrilandia_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mapa(esboco)_0
+      name: Castelo-nutrilandia_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2360
-        height: 1640
+        x: 373
+        y: 1181
+        width: 288
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b531dd716695d9580800000000000000
-      internalID: -8818794200299662501
+      spriteID: decedca90943b3ad0800000000000000
+      internalID: -2721523754138211091
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mapa(esboco)_0: -8818794200299662501
+      Castelo-nutrilandia_0: -2721523754138211091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
