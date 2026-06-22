@@ -61,12 +61,21 @@ public class GameRunnerFloresta : MonoBehaviour
     IEnumerator ChangeMole()
     {
         Debug.Log("ChangeMole iniciado");
+        int lastRandom = -1;
+
         while (currentTimer < matchTimer)
         {
             listMoles.ForEach(item => item.SetActive(false));
             yield return new WaitForSeconds(fadeDuration);
 
-            int randomNumber = randomNumberGenerator.Next(0, listMoles.Count);
+            // Garante que não escolhe o mesmo objeto duas vezes seguidas
+            int randomNumber;
+            do
+            {
+                randomNumber = randomNumberGenerator.Next(0, listMoles.Count);
+            } while (randomNumber == lastRandom && listMoles.Count > 1);
+
+            lastRandom = randomNumber;
             Debug.Log($"A mostrar objeto {randomNumber}");
             listMoles[randomNumber].SetActive(true);
 
