@@ -3,8 +3,7 @@ using UnityEngine.EventSystems;
 
 public class FoodItemFloresta : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public string foodType; // ex: "Fruta", "Vegetal", "Laticinio", "Doce"
-
+    public string foodType;
     private Vector3 startPosition;
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -14,11 +13,14 @@ public class FoodItemFloresta : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         startPosition = rectTransform.position;
+        Debug.Log("FoodItem iniciado: " + gameObject.name + " | Tipo: " + foodType);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log("Começou a arrastar: " + gameObject.name);
         transform.SetAsLastSibling();
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -28,7 +30,8 @@ public class FoodItemFloresta : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // a verificação de "acertou/errou" acontece no Basket (via OnDrop)
+        Debug.Log("Largou: " + gameObject.name);
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void ReturnToStart()
