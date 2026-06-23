@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VectorGraphics;
+using UnityEngine.SceneManagement;
 
 public class PintarRio : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
@@ -123,8 +125,7 @@ public class PintarRio : MonoBehaviour, IDragHandler, IPointerDownHandler
         if (progresso >= percentagemVitoria && !jogoTerminado)
         {
             jogoTerminado = true;
-            Debug.Log("🎉 Rio limpo! Parabéns!");
-            // Chama aqui a tua cena de vitória ou o botão
+            SceneManager.LoadScene("FimLimpezaRio");
         }
     }
 }
