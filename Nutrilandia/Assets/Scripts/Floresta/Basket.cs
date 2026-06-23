@@ -7,24 +7,35 @@ public class Basket : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log("OnDrop chamado no cesto: " + gameObject.name);
+
         GameObject dropped = eventData.pointerDrag;
-        if (dropped == null) return;
+        if (dropped == null)
+        {
+            Debug.Log("dropped é null!");
+            return;
+        }
 
         FoodItemFloresta food = dropped.GetComponent<FoodItemFloresta>();
-        if (food == null) return;
+        if (food == null)
+        {
+            Debug.Log("FoodItemFloresta não encontrado!");
+            return;
+        }
 
-        if (food.foodType == acceptedType)
+        Debug.Log("Tipo do alimento: " + food.foodType + " | Tipo aceite: " + acceptedType);
+
+        if (food.foodType.Trim().ToLower() == acceptedType.Trim().ToLower())
         {
             food.GetComponent<RectTransform>().position = transform.position;
-            dropped.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            food.GetComponent<CanvasGroup>().blocksRaycasts = false;
             Debug.Log("Correto: " + food.foodType);
-
-            CestosManager.Instance.FoodPlacedCorrectly(); // ← nome atualizado
+            CestosManager.Instance.FoodPlacedCorrectly();
         }
         else
         {
             food.ReturnToStart();
-            Debug.Log("Errado!");
+            Debug.Log("Errado! Esperado: " + acceptedType + " | Recebido: " + food.foodType);
         }
     }
 }
