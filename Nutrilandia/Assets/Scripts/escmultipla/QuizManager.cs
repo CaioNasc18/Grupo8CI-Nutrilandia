@@ -1,65 +1,38 @@
+using System.Collections;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class Question
+    public Button correctButton;
+    public Button[] allButtons;
+
+    public string nextSceneName;
+    public string wrongSceneName;
+    public void CorrectAnswer()
     {
-        public string question;
-        public string[] answers;
-        public int correctAnswerIndex;
+        StartCoroutine(CorrectRoutine());
     }
 
-    public Question[] questions;
-
-    public TextMeshProUGUI questionText;
-    public Button[] answerButtons;
-
-    private int currentQuestion = 0;
-
-    void Start()
+    public void WrongAnswer()
     {
-        ShowQuestion();
+        StartCoroutine(WrongRoutine());
     }
 
-    void ShowQuestion()
+    IEnumerator CorrectRoutine()
     {
-        Question q = questions[currentQuestion];
+        correctButton.image.color = Color.green;
 
-        questionText.text = q.question;
+        yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = q.answers[i];
-
-            int index = i; // importante para o clique correto
-            answerButtons[i].onClick.RemoveAllListeners();
-            answerButtons[i].onClick.AddListener(() => CheckAnswer(index));
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
 
-    void CheckAnswer(int index)
+    IEnumerator WrongRoutine()
     {
-        if (index == questions[currentQuestion].correctAnswerIndex)
-        {
-            Debug.Log("Correto!");
-        }
-        else
-        {
-            Debug.Log("Errado!");
-        }
+        yield return new WaitForSeconds(0.5f);
 
-        currentQuestion++;
-
-        if (currentQuestion < questions.Length)
-        {
-            ShowQuestion();
-        }
-        else
-        {
-            Debug.Log("Quiz terminado!");
-        }
+        SceneManager.LoadScene(wrongSceneName);
     }
 }
