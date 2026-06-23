@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class ReiMandaDificil : MonoBehaviour
 {
@@ -94,7 +95,7 @@ public class ReiMandaDificil : MonoBehaviour
         // Move o cesto com o rato
         Vector2 mousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            spawnArea, Input.mousePosition, null, out mousePos);
+            spawnArea, Mouse.current.position.ReadValue(), null, out mousePos);
         basket.anchoredPosition = new Vector2(
             Mathf.Clamp(mousePos.x, -spawnArea.rect.width / 2f + 80f, spawnArea.rect.width / 2f - 80f),
             basket.anchoredPosition.y);
