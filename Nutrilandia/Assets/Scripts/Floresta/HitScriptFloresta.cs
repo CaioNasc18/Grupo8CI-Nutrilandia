@@ -2,15 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitScript : MonoBehaviour
+public class HitScriptFloresta : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private bool isHealthy = false;
+
+    private GameRunnerFloresta gameRunner;
+
+    void Start()
+    {
+        gameRunner = FindFirstObjectByType<GameRunnerFloresta>();
+
+        if (gameRunner == null)
+            Debug.LogError("GameRunnerFloresta não encontrado na cena!", this);
+    }
+
     public void OnHit()
     {
-        GameManagerFloresta.IncrementRightAnswer();
+        if (gameRunner == null) return;
+
+        if (isHealthy)
+            gameRunner.IncrementWrongAnswer();
+        else
+            gameRunner.IncrementRightAnswer();
     }
+
     public void OnMiss()
     {
-        GameManagerFloresta.IncrementWrongAnswer();
+        if (gameRunner == null) return;
+
+        gameRunner.IncrementWrongAnswer();
     }
 }

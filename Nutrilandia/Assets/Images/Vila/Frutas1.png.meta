@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 69ff4db98d901fb4abb747557315bd7f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3057686470417285066
+    second: Frutas1_0
+  - first:
+      213: -7240094709284678398
+    second: Frutas1_1
+  - first:
+      213: 5325210959806115395
+    second: Frutas1_2
+  - first:
+      213: -6235979785556509530
+    second: Frutas1_3
+  - first:
+      213: 1818792124634125715
+    second: Frutas1_4
+  - first:
+      213: -2389145497607642386
+    second: Frutas1_5
+  - first:
+      213: 7465643841218759011
+    second: Frutas1_6
+  - first:
+      213: 5950686332079446787
+    second: Frutas1_7
+  - first:
+      213: -7867066505923908567
+    second: Frutas1_8
+  - first:
+      213: -7778832952768388185
+    second: Frutas1_9
+  - first:
+      213: -4173286909544142142
+    second: Frutas1_10
+  - first:
+      213: -1289476125899761727
+    second: Frutas1_11
+  - first:
+      213: -5832305563025157458
+    second: Frutas1_12
+  - first:
+      213: -2671792244924621641
+    second: Frutas1_13
+  - first:
+      213: -6492937805833535259
+    second: Frutas1_14
+  - first:
+      213: -1440012367955213085
+    second: Frutas1_15
+  - first:
+      213: -4459970303334780722
+    second: Frutas1_16
+  - first:
+      213: 2601990930836848367
+    second: Frutas1_17
+  - first:
+      213: 1587150776628761634
+    second: Frutas1_18
+  - first:
+      213: 5347598549569403642
+    second: Frutas1_19
+  - first:
+      213: 8598522000634535122
+    second: Frutas1_20
+  - first:
+      213: -7895656138015703557
+    second: Frutas1_21
+  - first:
+      213: 9028445640207113605
+    second: Frutas1_22
+  - first:
+      213: -4706702390545659073
+    second: Frutas1_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Frutas1_0
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 3648
+        width: 83
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63082400b5ae095d0800000000000000
+      internalID: -3057686470417285066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_1
+      rect:
+        serializedVersion: 2
+        x: 1490
+        y: 3769
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205d6e8b834068b90800000000000000
+      internalID: -7240094709284678398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_2
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 3648
+        width: 63
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ea24d5723f6e940800000000000000
+      internalID: 5325210959806115395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_3
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 3648
+        width: 25
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac3367bc695579a0800000000000000
+      internalID: -6235979785556509530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_4
+      rect:
+        serializedVersion: 2
+        x: 2300
+        y: 3647
+        width: 107
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395581d0dc5ad3910800000000000000
+      internalID: 1818792124634125715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_5
+      rect:
+        serializedVersion: 2
+        x: 2549
+        y: 3648
+        width: 63
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee26f5204dc08ded0800000000000000
+      internalID: -2389145497607642386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_6
+      rect:
+        serializedVersion: 2
+        x: 2748
+        y: 3648
+        width: 40
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3694d67d48b4b9760800000000000000
+      internalID: 7465643841218759011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_7
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 3648
+        width: 55
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b1e51e0b5159250800000000000000
+      internalID: 5950686332079446787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_8
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 3647
+        width: 92
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c2802c1b092d290800000000000000
+      internalID: -7867066505923908567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_9
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 3648
+        width: 25
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a3232bb4a80c0490800000000000000
+      internalID: -7778832952768388185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_10
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 3646
+        width: 115
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca65d2baa18516c0800000000000000
+      internalID: -4173286909544142142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_11
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 3646
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7d561ab4cda1ee0800000000000000
+      internalID: -1289476125899761727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_12
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 3648
+        width: 90
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2d956cdfc7f0fa0800000000000000
+      internalID: -5832305563025157458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_13
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 3646
+        width: 71
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bcdf97eb13ebead0800000000000000
+      internalID: -2671792244924621641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_14
+      rect:
+        serializedVersion: 2
+        x: 2418
+        y: 3646
+        width: 116
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e08696777374e5a0800000000000000
+      internalID: -6492937805833535259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_15
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2492
+        width: 925
+        height: 834
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e44cdf716c040ce0800000000000000
+      internalID: -1440012367955213085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_16
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 2492
+        width: 863
+        height: 955
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec070f893a00b12c0800000000000000
+      internalID: -4459970303334780722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_17
+      rect:
+        serializedVersion: 2
+        x: 2931
+        y: 2522
+        width: 773
+        height: 773
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee715537f02c1420800000000000000
+      internalID: 2601990930836848367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_18
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1252
+        width: 699
+        height: 1093
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22451f5e831b60610800000000000000
+      internalID: 1587150776628761634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_19
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 1275
+        width: 916
+        height: 1101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa7a7c4c8c763a40800000000000000
+      internalID: 5347598549569403642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_20
+      rect:
+        serializedVersion: 2
+        x: 2985
+        y: 1373
+        width: 664
+        height: 945
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dcd331e336145770800000000000000
+      internalID: 8598522000634535122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 179
+        width: 898
+        height: 845
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfdf0f0539efc6290800000000000000
+      internalID: -7895656138015703557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_22
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 190
+        width: 1036
+        height: 874
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d187a997b7b4d70800000000000000
+      internalID: 9028445640207113605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frutas1_23
+      rect:
+        serializedVersion: 2
+        x: 2991
+        y: 126
+        width: 687
+        height: 1114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3b4b0cec1f6eaeb0800000000000000
+      internalID: -4706702390545659073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Frutas1_0: -3057686470417285066
+      Frutas1_1: -7240094709284678398
+      Frutas1_10: -4173286909544142142
+      Frutas1_11: -1289476125899761727
+      Frutas1_12: -5832305563025157458
+      Frutas1_13: -2671792244924621641
+      Frutas1_14: -6492937805833535259
+      Frutas1_15: -1440012367955213085
+      Frutas1_16: -4459970303334780722
+      Frutas1_17: 2601990930836848367
+      Frutas1_18: 1587150776628761634
+      Frutas1_19: 5347598549569403642
+      Frutas1_2: 5325210959806115395
+      Frutas1_20: 8598522000634535122
+      Frutas1_21: -7895656138015703557
+      Frutas1_22: 9028445640207113605
+      Frutas1_23: -4706702390545659073
+      Frutas1_3: -6235979785556509530
+      Frutas1_4: 1818792124634125715
+      Frutas1_5: -2389145497607642386
+      Frutas1_6: 7465643841218759011
+      Frutas1_7: 5950686332079446787
+      Frutas1_8: -7867066505923908567
+      Frutas1_9: -7778832952768388185
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
