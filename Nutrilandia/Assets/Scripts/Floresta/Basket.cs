@@ -1,25 +1,28 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Basket : MonoBehaviour
+public class Basket : MonoBehaviour, IDropHandler
 {
-    public string acceptedType; // tem de coincidir com foodType do alimento
+    public string acceptedType;
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void OnDrop(PointerEventData eventData)
     {
-        FoodItem food = other.GetComponent<FoodItem>();
+        GameObject dropped = eventData.pointerDrag;
+        if (dropped == null) return;
+
+        FoodItemFloresta food = dropped.GetComponent<FoodItemFloresta>();
         if (food == null) return;
 
         if (food.foodType == acceptedType)
         {
-            // Acertou!
-            food.transform.position = transform.position;
-            food.GetComponent<Collider2D>().enabled = false; // j· n„o pode ser arrastado outra vez
+            food.GetComponent<RectTransform>().position = transform.position;
+            dropped.GetComponent<CanvasGroup>().blocksRaycasts = false;
             Debug.Log("Correto: " + food.foodType);
-            // Aqui podes chamar som, pontuaÁ„o, animaÁ„o, etc.
+
+            CestosManager.Instance.FoodPlacedCorrectly(); // ‚Üê nome atualizado
         }
         else
         {
-            // Errou
             food.ReturnToStart();
             Debug.Log("Errado!");
         }
