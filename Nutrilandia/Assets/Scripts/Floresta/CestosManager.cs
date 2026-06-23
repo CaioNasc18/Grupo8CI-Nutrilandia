@@ -10,6 +10,18 @@ public class CestosManager : MonoBehaviour
 
     public string nextSceneName; // nome exato da Scene a carregar ao ganhar
 
+    void Start()
+    {
+        FoodItemFloresta[] foods = FindObjectsByType<FoodItemFloresta>(FindObjectsSortMode.None);
+        Debug.Log("Alimentos encontrados: " + foods.Length);
+        foreach (FoodItemFloresta f in foods)
+        {
+            Debug.Log("- " + f.gameObject.name + " | Tipo: " + f.foodType);
+        }
+        totalFoods = foods.Length;
+        Debug.Log("Total Foods definido para: " + totalFoods);
+    }
+
     void Awake()
     {
         Instance = this;
@@ -32,3 +44,4 @@ public class CestosManager : MonoBehaviour
         SceneManager.LoadScene("FimJardimEncantado");
     }
 }
+

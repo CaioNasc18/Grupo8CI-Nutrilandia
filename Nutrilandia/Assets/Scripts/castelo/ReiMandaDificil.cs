@@ -2,199 +2,180 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class ReiMandaDificil : MonoBehaviour
 {
     [Header("UI")]
-    public TextMeshProUGUI reiText;
-    public TextMeshProUGUI livesText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI livesText;
+    public RectTransform basket;          // o cesto
+    public RectTransform spawnArea;       // área onde os alimentos caem
 
-    [Header("Click Round")]
-    public Button foodButton;
-    public TextMeshProUGUI foodButtonText;
-
-    [Header("Sequence Round")]
-    public GameObject sequencePanel;
-    public Button[] sequenceButtons;
-    public TextMeshProUGUI[] sequenceButtonTexts;
-
-    [Header("Drag Round")]
-    public GameObject dragPanel;
-    public RectTransform draggableFood;    // o alimento que se arrasta
-    public TextMeshProUGUI draggableText;
-    public RectTransform healthyZone;      // zona saudável
-    public RectTransform unhealthyZone;    // zona não saudável
-    public TextMeshProUGUI healthyZoneText;
-    public TextMeshProUGUI unhealthyZoneText;
+    [Header("Alimentos")]
+    public FoodItem[] foods;
+    public GameObject foodPrefab;         // prefab do alimento que cai
 
     [Header("Cenas")]
     public string victoryScene;
     public string failScene;
 
     [Header("Configurações")]
-    public float timePerRound = 3f;
-    public int totalRounds = 12;
-
-    private List<string> healthyFoods = new List<string> { "Maçã", "Cenoura", "Brócolo", "Banana", "Alface", "Laranja" };
-    private List<string> unhealthyFoods = new List<string> { "Bolo", "Gomas", "Chocolate", "Chips", "Rebuçados", "Donut" };
+    public float gameDuration = 45f;
+    public float spawnInterval = 1.2f;
+    public float fallSpeed = 300f;
+    public float speedIncreaseRate = 20f; // aumenta por segundo
 
     private int lives = 3;
     private float timer;
-    private bool waitingForClick = false;
-    private bool isHealthy;
-    private bool dragAnswered = false;
+    private bool gameActive = false;
+    private List<GameObject> fallingFoods = new List<GameObject>();
 
     void Start()
     {
         UpdateLivesText();
-        healthyZoneText.text = "Saudável 🥦";
-        unhealthyZoneText.text = "Guloseima 🍬";
         StartCoroutine(GameLoop());
     }
 
     IEnumerator GameLoop()
     {
-        for (int i = 0; i < totalRounds; i++)
-        {
-            float rand = Random.value;
-            if (rand < 0.33f)
-                yield return StartCoroutine(ClickRound());
-            else if (rand < 0.66f)
-                yield return StartCoroutine(SequenceRound());
-            else
-                yield return StartCoroutine(DragRound());
+        timer = gameDuration;
+        gameActive = true;
+        StartCoroutine(SpawnFoods());
 
-            if (lives <= 0) yield break;
-            yield return new WaitForSeconds(0.4f);
-        }
-
-        SceneManager.LoadScene(victoryScene);
-    }
-
-    IEnumerator ClickRound()
-    {
-        isHealthy = Random.value > 0.5f;
-        string food = isHealthy
-            ? healthyFoods[Random.Range(0, healthyFoods.Count)]
-            : unhealthyFoods[Random.Range(0, unhealthyFoods.Count)];
-
-        reiText.text = "Rei manda clicar nos alimentos SAUDÁVEIS!";
-        foodButtonText.text = food;
-        foodButton.gameObject.SetActive(true);
-        sequencePanel.SetActive(false);
-        dragPanel.SetActive(false);
-
-        timer = timePerRound;
-        waitingForClick = true;
-
-        while (waitingForClick && timer > 0)
+        while (timer > 0 && gameActive)
         {
             timer -= Time.deltaTime;
             timerText.text = Mathf.Ceil(timer).ToString();
+            fallSpeed += speedIncreaseRate * Time.deltaTime;
             yield return null;
         }
 
-        if (waitingForClick && isHealthy) LoseLife();
-        waitingForClick = false;
-        foodButton.gameObject.SetActive(false);
+        if (lives > 0)
+            SceneManager.LoadScene(victoryScene);
     }
 
-    IEnumerator SequenceRound()
+    IEnumerator SpawnFoods()
     {
-        int correctIndex = Random.Range(0, 4);
-        reiText.text = "Rei manda escolher o alimento SAUDÁVEL!";
-        sequencePanel.SetActive(true);
-        foodButton.gameObject.SetActive(false);
-        dragPanel.SetActive(false);
-
-        for (int i = 0; i < sequenceButtons.Length; i++)
+        while (gameActive && timer > 0)
         {
-            sequenceButtonTexts[i].text = i == correctIndex
-                ? healthyFoods[Random.Range(0, healthyFoods.Count)]
-                : unhealthyFoods[Random.Range(0, unhealthyFoods.Count)];
+            SpawnFood();
+            yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
+    void SpawnFood()
+    {
+        FoodItem food = foods[Random.Range(0, foods.Length)];
+
+        GameObject obj = Instantiate(foodPrefab, spawnArea);
+        RectTransform rt = obj.GetComponent<RectTransform>();
+
+        // Posição aleatória no topo
+        float x = Random.Range(-spawnArea.rect.width / 2f + 50f, spawnArea.rect.width / 2f - 50f);
+        rt.anchoredPosition = new Vector2(x, spawnArea.rect.height / 2f);
+
+        // Mete o sprite
+        obj.GetComponent<Image>().sprite = food.sprite;
+
+        // Guarda se é saudável
+        FallingFood ff = obj.AddComponent<FallingFood>();
+        ff.isHealthy = food.isHealthy;
+        ff.manager = this;
+
+        fallingFoods.Add(obj);
+    }
+
+    void Update()
+    {
+        if (!gameActive) return;
+
+        // Move o cesto com o rato
+        Vector2 mousePos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            spawnArea, Input.mousePosition, null, out mousePos);
+        basket.anchoredPosition = new Vector2(
+            Mathf.Clamp(mousePos.x, -spawnArea.rect.width / 2f + 80f, spawnArea.rect.width / 2f - 80f),
+            basket.anchoredPosition.y);
+
+        // Move os alimentos para baixo
+        foreach (GameObject food in fallingFoods)
+        {
+            if (food == null) continue;
+            RectTransform rt = food.GetComponent<RectTransform>();
+            rt.anchoredPosition += Vector2.down * fallSpeed * Time.deltaTime;
+
+            // Verifica colisão com o cesto
+            if (RectOverlap(rt, basket))
+            {
+                FallingFood ff = food.GetComponent<FallingFood>();
+                if (ff.isHealthy)
+                {
+                    // Apanhou saudável — bom!
+                    Destroy(food);
+                }
+                else
+                {
+                    // Apanhou guloseima — perde vida!
+                    LoseLife();
+                    Destroy(food);
+                }
+            }
+
+            // Caiu no chão
+            if (rt.anchoredPosition.y < -spawnArea.rect.height / 2f)
+            {
+                FallingFood ff = food.GetComponent<FallingFood>();
+                if (ff.isHealthy)
+                {
+                    // Deixou cair saudável — perde vida!
+                    LoseLife();
+                }
+                Destroy(food);
+            }
         }
 
-        timer = timePerRound;
-        waitingForClick = true;
-
-        while (waitingForClick && timer > 0)
-        {
-            timer -= Time.deltaTime;
-            timerText.text = Mathf.Ceil(timer).ToString();
-            yield return null;
-        }
-
-        if (waitingForClick) LoseLife();
-        waitingForClick = false;
-        sequencePanel.SetActive(false);
+        fallingFoods.RemoveAll(f => f == null);
     }
 
-    IEnumerator DragRound()
+    bool RectOverlap(RectTransform a, RectTransform b)
     {
-        isHealthy = Random.value > 0.5f;
-        string food = isHealthy
-            ? healthyFoods[Random.Range(0, healthyFoods.Count)]
-            : unhealthyFoods[Random.Range(0, unhealthyFoods.Count)];
-
-        reiText.text = "Rei manda arrastar para o lugar certo!";
-        draggableText.text = food;
-        dragPanel.SetActive(true);
-        foodButton.gameObject.SetActive(false);
-        sequencePanel.SetActive(false);
-        dragAnswered = false;
-
-        // Reset posição
-        draggableFood.anchoredPosition = Vector2.zero;
-
-        timer = timePerRound;
-
-        while (!dragAnswered && timer > 0)
-        {
-            timer -= Time.deltaTime;
-            timerText.text = Mathf.Ceil(timer).ToString();
-            yield return null;
-        }
-
-        if (!dragAnswered) LoseLife();
-        dragPanel.SetActive(false);
+        Rect ra = GetWorldRect(a);
+        Rect rb = GetWorldRect(b);
+        return ra.Overlaps(rb);
     }
 
-    // Chama isto quando o alimento é largado numa zona
-    public void OnDroppedOnZone(bool droppedOnHealthy)
+    Rect GetWorldRect(RectTransform rt)
     {
-        if (dragAnswered) return;
-        dragAnswered = true;
-        if (droppedOnHealthy != isHealthy) LoseLife();
-    }
-
-    public void OnFoodClicked()
-    {
-        if (!waitingForClick) return;
-        if (!isHealthy) LoseLife();
-        waitingForClick = false;
-    }
-
-    public void OnSequenceClicked(int index)
-    {
-        if (!waitingForClick) return;
-        string clicked = sequenceButtonTexts[index].text;
-        if (!healthyFoods.Contains(clicked)) LoseLife();
-        waitingForClick = false;
+        Vector3[] corners = new Vector3[4];
+        rt.GetWorldCorners(corners);
+        return new Rect(corners[0].x, corners[0].y,
+            corners[2].x - corners[0].x,
+            corners[2].y - corners[0].y);
     }
 
     void LoseLife()
     {
         lives--;
         UpdateLivesText();
-        if (lives <= 0) SceneManager.LoadScene(failScene);
+        if (lives <= 0)
+        {
+            gameActive = false;
+            SceneManager.LoadScene(failScene);
+        }
     }
 
     void UpdateLivesText()
     {
-        livesText.text = "Vidas: " + lives;
+        livesText.text = lives == 3 ? "Vidas: 3" :
+                         lives == 2 ? "Vidas: 2" :
+                         lives == 1 ? "Vidas: 1" : "Vidas: 0";
     }
+}
+
+public class FallingFood : MonoBehaviour
+{
+    public bool isHealthy;
+    public ReiMandaDificil manager;
 }
